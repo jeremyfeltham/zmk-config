@@ -1,29 +1,10 @@
-/ {
-    chosen {
-        zmk,kscan = &custom_kscan;
-    };
+&kscan0 {
+    diode-direction = "row2col";
 
-    custom_kscan: kscan_custom {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "row2col"; // FLIPPED TO MATCH YOUR PHYSICAL HARDWARE
-
-        // ROWS SINK/SOURCE POWER
-        row-gpios
-            = <&gpio0 20 GPIO_ACTIVE_HIGH> // Row 0 (Top Row -> Pin 20)
-            , <&gpio0 22 GPIO_ACTIVE_HIGH> // Row 1 (Middle Row -> Pin 22)
-            , <&gpio0 24 GPIO_ACTIVE_HIGH> // Row 2 (Bottom Row -> Pin 24)
-            , <&gpio1 0  GPIO_ACTIVE_HIGH> // Row 3 (Thumb Cluster -> Pin 100)
-            ;
-
-
-        // COLUMNS RECEIVE POWER THROUGH DIODES
-        col-gpios
-            = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 0
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 1
-            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 2
-            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 3
-            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 4
-            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 5
-            ;
-    };
+    row-gpios
+        = <&gpio0 22 GPIO_ACTIVE_HIGH> // Physical Label 22 (Top Row)
+        , <&gpio0 24 GPIO_ACTIVE_HIGH> // Physical Label 24 (Middle Row)
+        , <&gpio1 0  GPIO_ACTIVE_HIGH> // Physical Label 100 (Bottom Row)
+        , <&gpio0 20 GPIO_ACTIVE_HIGH> // Physical Label 20 (Thumb Cluster)
+        ;
 };
