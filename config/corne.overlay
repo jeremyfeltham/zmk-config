@@ -5,23 +5,24 @@
 
     custom_kscan: kscan_custom {
         compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
+        diode-direction = "row2col"; // FLIPPED TO MATCH YOUR PHYSICAL HARDWARE
 
+        // ROWS SINK/SOURCE POWER
         row-gpios
-            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top Row - New Pin)
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle Row - Shifted)
-            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom Row - Shifted)
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumb Cluster - Shifted)
+            = <&gpio0 20 GPIO_ACTIVE_HIGH> // Row 0 (Top Row)
+            , <&gpio0 22 GPIO_ACTIVE_HIGH> // Row 1 (Middle Row)
+            , <&gpio0 24 GPIO_ACTIVE_HIGH> // Row 2 (Bottom Row)
+            , <&gpio1 0  GPIO_ACTIVE_HIGH> // Row 3 (Thumb Cluster)
             ;
 
-
+        // COLUMNS RECEIVE POWER THROUGH DIODES
         col-gpios
-            = <&gpio0 31 GPIO_ACTIVE_HIGH>
-            , <&gpio0 29 GPIO_ACTIVE_HIGH>
-            , <&gpio0 2  GPIO_ACTIVE_HIGH>
-            , <&gpio1 15 GPIO_ACTIVE_HIGH>
-            , <&gpio1 13 GPIO_ACTIVE_HIGH>
-            , <&gpio1 11 GPIO_ACTIVE_HIGH>
+            = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 0
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 1
+            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 2
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 3
+            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 4
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Col 5
             ;
     };
-};2
+};
