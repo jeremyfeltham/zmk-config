@@ -1,0 +1,3 @@
+#include "corne.dtsi"
+
+/* Left is central. col-offset stays at its default (0) — no override needed. */
