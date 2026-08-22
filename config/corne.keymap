@@ -17,13 +17,15 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
+        // BOTH HALVES SHARE THESE EXACT ROW PINS (PROVEN BY YOUR TEST)
         row-gpios
-            = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top)
-            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle)
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom)
-            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumbs -> Pin 100)
+            = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top Row)
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle Row)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom Row)
+            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumb Cluster)
             ;
 
+        // LEFT HALF COLUMNS: Outer Pinky to Inner Index
         col-gpios
             = <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0
             , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1
@@ -31,6 +33,17 @@
             , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4
             , <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5
+            ;
+
+        // RIGHT HALF COLUMNS: Manually flipped to match your physical mirror wiring
+        // This stops ZMK from guessing and forces it to use your actual layout
+        right-col-gpios
+            = <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0 (Your wired Inner Index)
+            , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1
+            , <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 2
+            , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3
+            , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4
+            , <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5 (Your wired Outer Pinky)
             ;
     };
 };
