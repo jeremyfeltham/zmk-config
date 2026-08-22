@@ -1,12 +1,28 @@
-/* Put this inside config/corne_right.overlay */
-&kscan0 {
-    // REVERSES THE HARDWARE SCANNING ORDER FOR THE RIGHT HAND CLONE BOARD
-    col-gpios
-        = <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5 (Inner Index Pin 111)
-        , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4 (Pin 113)
-        , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3 (Pin 115)
-        , <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 2 (Pin 2)
-        , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1 (Pin 29)
-        , <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0 (Outer Pinky Pin 31)
-        ;
+/ {
+    chosen {
+        zmk,kscan = &custom_kscan;
+    };
+
+    custom_kscan: kscan_custom {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        // THE PHYSICAL ROW CONNECTIONS PROVEN BY YOUR BYPASS TEST
+        row-gpios
+            = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top)
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom)
+            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumbs -> Pin 100)
+            ;
+
+        // THE PHYSICAL REVERSED COLUMN CONFIGURATION FOR YOUR RIGHT HALF WIRING
+        col-gpios
+            = <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5 (Inner Index Pin 111)
+            , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4 (Pin 113)
+            , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3 (Pin 115)
+            , <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 2 (Pin 2)
+            , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1 (Pin 29)
+            , <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0 (Outer Pinky Pin 31)
+            ;
+    };
 };
