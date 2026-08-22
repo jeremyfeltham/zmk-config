@@ -8,20 +8,29 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// FORCE THE KEYMAP FILE TO HIJACK THE CORE HARDWARE PINS
 &kscan0 {
     diode-direction = "row2col";
 
     row-gpios
-        = <&gpio0 22 GPIO_ACTIVE_HIGH> // Top Row (Types qwer from your paperclip test)
-        , <&gpio0 24 GPIO_ACTIVE_HIGH> // Middle Row (Types asdf)
-        , <&gpio1 0  GPIO_ACTIVE_HIGH> // Bottom Row (Types zxcv)
-        , <&gpio0 20 GPIO_ACTIVE_HIGH> // Thumb Cluster (Pin 20)
+        = <&gpio0 22 GPIO_ACTIVE_HIGH> 
+        , <&gpio0 24 GPIO_ACTIVE_HIGH> 
+        , <&gpio1 0  GPIO_ACTIVE_HIGH> 
+        , <&gpio0 20 GPIO_ACTIVE_HIGH> 
+        ;
+
+    // ADDED PULL-DOWN CONFIGURATIONS TO STABILIZE FLOATING SIGNALS
+    col-gpios
+        = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
 };
 
 / {
-        keymap {
+    keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
