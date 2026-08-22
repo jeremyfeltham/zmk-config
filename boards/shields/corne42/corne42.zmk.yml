@@ -1,5 +1,5 @@
 file_format: "1"
-id: corne
+id: corne42
 name: Corne (custom hand-wired 42-key)
 type: shield
 url: https://github.com/foostan/crkbd
@@ -7,5 +7,5 @@ requires: [nice_nano_v2]
 features:
   - keys
 siblings:
-  - corne_left
-  - corne_right
+  - corne42_left
+  - corne42_right
