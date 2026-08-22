@@ -8,11 +8,12 @@
         diode-direction = "col2row";
 
         row-gpios
-            = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top -> now Pin 22)
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle -> now Pin 24)
-            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom -> now Pin 100)
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumb -> now Pin 20)
+            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 (Top Row - New Pin)
+            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 (Middle Row - Shifted)
+            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 (Bottom Row - Shifted)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumb Cluster - Shifted)
             ;
+
 
         col-gpios
             = <&gpio0 31 GPIO_ACTIVE_HIGH>
