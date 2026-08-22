@@ -1,0 +1,12 @@
+/* Put this inside config/corne_right.overlay */
+&kscan0 {
+    // REVERSES THE HARDWARE SCANNING ORDER FOR THE RIGHT HAND CLONE BOARD
+    col-gpios
+        = <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5 (Inner Index Pin 111)
+        , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4 (Pin 113)
+        , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3 (Pin 115)
+        , <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 2 (Pin 2)
+        , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1 (Pin 29)
+        , <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0 (Outer Pinky Pin 31)
+        ;
+};
