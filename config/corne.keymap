@@ -8,27 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// HIJACK THE STANDARD CORNE ENGINE NATIVELY ON BOTH HALVES
-&kscan0 {
-    diode-direction = "col2row";
-
-    row-gpios
-        = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0
-        , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1
-        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2
-        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 (Thumb Cluster Pin 100)
-        ;
-
-    col-gpios
-        = <&gpio0 31 GPIO_ACTIVE_HIGH> // Col 0
-        , <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1
-        , <&gpio0 2  GPIO_ACTIVE_HIGH> // Col 2
-        , <&gpio1 15 GPIO_ACTIVE_HIGH> // Col 3
-        , <&gpio1 13 GPIO_ACTIVE_HIGH> // Col 4
-        , <&gpio1 11 GPIO_ACTIVE_HIGH> // Col 5
-        ;
-};
-
 / {
     keymap {
         compatible = "zmk,keymap";

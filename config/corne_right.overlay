@@ -1,0 +1,9 @@
+#include "corne.dtsi"
+
+&default_transform {
+    col-offset = <6>; // Shifts the keymap logic over by 6 columns
+};
+
+&kscan0 {
+    col-offset = <6>; // Shifts the electrical scanner logic over by 6 columns
+};
