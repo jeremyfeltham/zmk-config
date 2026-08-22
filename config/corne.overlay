@@ -9,11 +9,12 @@
 
         // ROWS SINK/SOURCE POWER
         row-gpios
-            = <&gpio0 20 GPIO_ACTIVE_HIGH> // Row 0 (Top Row)
-            , <&gpio0 22 GPIO_ACTIVE_HIGH> // Row 1 (Middle Row)
-            , <&gpio0 24 GPIO_ACTIVE_HIGH> // Row 2 (Bottom Row)
-            , <&gpio1 0  GPIO_ACTIVE_HIGH> // Row 3 (Thumb Cluster)
+            = <&gpio0 20 GPIO_ACTIVE_HIGH> // Row 0 (Top Row -> Pin 20)
+            , <&gpio0 22 GPIO_ACTIVE_HIGH> // Row 1 (Middle Row -> Pin 22)
+            , <&gpio0 24 GPIO_ACTIVE_HIGH> // Row 2 (Bottom Row -> Pin 24)
+            , <&gpio1 0  GPIO_ACTIVE_HIGH> // Row 3 (Thumb Cluster -> Pin 100)
             ;
+
 
         // COLUMNS RECEIVE POWER THROUGH DIODES
         col-gpios
